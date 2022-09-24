@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "product">
+
+	<insert id="save" parameterType = "com.example.product.domain.Product" useGeneratedKeys="true" keyProperty="id">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+		select product_seq.nextval from dual
+		</selectKey>
+		
+		insert into product(id, name) values(#{id}, #{name})
+	</insert>
+	
+	<select id="findById" parameterType="long" resultType="com.example.product.domain.Product">
+		select id, name from product where id = #{id}
+	</select>
+	
+	<select id = "findByName" parameterType="String" resultType="com.example.product.domain.Product">
+		select id, name from product where name = #{name}
+	</select>
+	
+	<select id = "findAll" resultType="com.example.product.domain.Product">
+		select id, name from product
+	</select>
+	
+	<delete id = "deleteById" parameterType="long">
+		delete from product where id = #{id}
+	</delete>
+</mapper>
