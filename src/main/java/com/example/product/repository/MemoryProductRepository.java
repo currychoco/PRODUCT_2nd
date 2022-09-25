@@ -37,11 +37,7 @@ public class MemoryProductRepository implements ProductRepository{
 	@Override
 	public boolean deleteById(Long id) {
 		Product p = store.remove(id);
-		if(p == null) {
-			return false;
-		}else {
-			return true;
-		}
+		return p != null;
 	}
 	
 

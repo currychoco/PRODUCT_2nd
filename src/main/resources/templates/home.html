@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <h1>병관이네 가게</h1>
+
+<p>
+	<span th:text="${name}"></span>님 안녕하세요
+</p>
 <a href = "/product/new">상품추가</a>
 <a href = "/product">상품보기</a>
+<a href = "/member/logout">로그아웃</a>
 </body>
 </html>

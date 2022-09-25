@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProductReadDto {
-	private Long id;
+public class MemberJoinDto {
+	private String id;
+	private String password;
 	private String name;
 }

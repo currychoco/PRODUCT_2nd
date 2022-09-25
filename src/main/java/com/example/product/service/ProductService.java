@@ -9,14 +9,13 @@ import com.example.product.domain.Product;
 import com.example.product.dto.ProductReadDto;
 import com.example.product.repository.ProductRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 	
-	private ProductRepository productRepository;
-	
-	public ProductService(ProductRepository productRepository) {
-		this.productRepository = productRepository;
-	}
+	private final ProductRepository productRepository;
 	
 	public Long addProduct(Product product) {
 		validateDuplicateProduct(product);

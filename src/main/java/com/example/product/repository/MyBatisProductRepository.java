@@ -7,14 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.example.product.domain.Product;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class MyBatisProductRepository implements ProductRepository {
 
 	private final SqlSessionTemplate sqlSession;
-
-	public MyBatisProductRepository(SqlSessionTemplate sqlSession) {
-		this.sqlSession = sqlSession;
-	}
 
 	@Override
 	public Product save(Product product) {

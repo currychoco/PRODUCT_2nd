@@ -13,14 +13,13 @@ import com.example.product.dto.ProductCreateDto;
 import com.example.product.dto.ProductReadDto;
 import com.example.product.service.ProductService;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class ProductController {
 
 	private final ProductService productService;
-
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
 
 	@GetMapping(value = "/product/new")
 	public String createForm() {
