@@ -1,10 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <body>
-<form action = "/product/new" method = "post">
-	<label for = "name">상품이름</label>
-	<input type = "text" id = "name" name = "name" placeholder="상품 이름을 입력하세요.">
-	<button type = "submit">상품등록</button>
-	<a href = "/">홈으로 돌아가기</a>
-</form>
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>
+			<a href="/">병관이네 가게</a>
+		</h1>
+		<p class="text-right m-t-sm">
+			<span th:text="${name}"></span>님 안녕하세요
+		</p>
+	</div>
+	<form action = "/product/new" method = "post">
+		<div class="form-group">
+			<label for="name">상품이름</label>
+			<input type="text" class="form-control" id = "name" name = "name" placeholder="상품 이름을 입력하세요.">
+		</div>
+		<button type = "submit" class="btn btn-primary">상품등록</button>
+	</form>
+</div>
+
 </body>
