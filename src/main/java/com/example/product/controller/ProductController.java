@@ -2,6 +2,9 @@ package com.example.product.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +30,13 @@ public class ProductController {
 	}
 
 	@PostMapping(value = "/product/new")
-	public String create(ProductCreateDto productCreateDto) {
+	public String create(ProductCreateDto productCreateDto, HttpServletRequest request) {
 		Product product = new Product();
 		product.setName(productCreateDto.getName());
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		product.setCreatedBy(id);
+		
 		productService.addProduct(product);
 		return "redirect:/product/new";
 	}

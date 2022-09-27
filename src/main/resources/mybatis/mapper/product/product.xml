@@ -8,7 +8,7 @@
 		select product_seq.nextval from dual
 		</selectKey>
 		
-		insert into product(id, name) values(#{id}, #{name})
+		insert into product(id, name, created_by) values(#{id}, #{name}, #{createdBy})
 	</insert>
 	
 	<select id="findById" parameterType="long" resultType="com.example.product.domain.Product">
@@ -20,7 +20,9 @@
 	</select>
 	
 	<select id = "findAll" resultType="com.example.product.domain.Product">
-		select id, name from product
+		select pr.id as id, pr.name as name, mb.name as createdBy
+		from product pr 
+		JOIN member mb ON pr.created_by = mb.id
 	</select>
 	
 	<delete id = "deleteById" parameterType="long">

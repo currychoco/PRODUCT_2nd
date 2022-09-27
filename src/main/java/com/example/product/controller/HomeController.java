@@ -13,7 +13,6 @@ public class HomeController {
 	public String home(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		String name = (String)session.getAttribute("name");
 		String ip = (String)session.getAttribute("ip");
 		
 		String currentIp = request.getLocalAddr();
@@ -21,9 +20,6 @@ public class HomeController {
 		if(id != null && !currentIp.equals(ip)) {
 			session.invalidate();
 		}
-		
-		model.addAttribute("id", id);
-		model.addAttribute("name", name);
 		
 		return "home";
 	}

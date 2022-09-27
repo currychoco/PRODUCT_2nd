@@ -20,12 +20,14 @@
 			<tr>
 				<th>#</th>
 				<th>이름</th>
+				<th>등록자</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each = "p : ${products}">
 				<td th:text = "${p.id}"></td>
 				<td th:text = "${p.name}"></td>
+				<td th:text = "${p.createdBy}"></td>
 				<td>
 					<a th:href="@{/product/{id}/delete(id=${p.id})}">삭제</a>
 				</td>

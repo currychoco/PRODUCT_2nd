@@ -37,6 +37,7 @@ public class ProductService {
 			ProductReadDto dto = new ProductReadDto();
 			dto.setId(product.getId());
 			dto.setName(product.getName());
+			dto.setCreatedBy(product.getCreatedBy());
 			dtos.add(dto);
 		}
 		return dtos;
