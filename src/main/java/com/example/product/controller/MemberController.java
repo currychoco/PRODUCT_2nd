@@ -1,6 +1,8 @@
 package com.example.product.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -37,13 +39,18 @@ public class MemberController {
 	}
 	
 	@PostMapping(value="member/login")
-	public String login(MemberJoinDto joinDto, HttpServletRequest request) {
+	public String login(MemberJoinDto joinDto, HttpServletRequest request, HttpServletResponse response) {
 		Member member = memberService.checkLogin(joinDto.getId(), joinDto.getPassword());
 		if(member != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", member.getId());
 			session.setAttribute("name", member.getName());
 			session.setAttribute("ip", request.getLocalAddr());
+			
+			Cookie myCookie = new Cookie("id", String.valueOf(member.getId()));
+			myCookie.setPath("/");
+			response.addCookie(myCookie);
+			
 			return "redirect:/";
 		}else {
 			return "redirect:/member/login";

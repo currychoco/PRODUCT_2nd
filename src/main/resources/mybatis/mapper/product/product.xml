@@ -20,9 +20,8 @@
 	</select>
 	
 	<select id = "findAll" resultType="com.example.product.domain.Product">
-		select pr.id as id, pr.name as name, mb.name as createdBy
-		from product pr 
-		JOIN member mb ON pr.created_by = mb.id
+		select id as id, name as name, created_by as createdBy from product
+
 	</select>
 	
 	<delete id = "deleteById" parameterType="long">
